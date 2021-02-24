@@ -2,13 +2,19 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
 const Statistic = (props) => {
-  if(props.percent==true) {
+  if(props.percent===true) {
     return (
-      <p>{props.name} {props.value}%</p>
+      <tr>
+        <td>{props.name}</td>
+        <td>{props.value}%</td>
+      </tr>
     )
   }
   return (
-    <p>{props.name} {props.value}</p>
+    <tr>
+        <td>{props.name}</td>
+        <td>{props.value}</td>
+      </tr>
   )
 }
 
@@ -20,11 +26,15 @@ const Statistics = (props) => {
   } else return (
     <div>
       <h1>statistics</h1>
-      <Statistic name="good" value={props.good}/>
-      <Statistic name="neutral" value={props.neutral}/>
-      <Statistic name="bad" value={props.bad}/>
-      <Statistic name="average" value={(props.good-props.bad)/(props.good+props.neutral+props.bad)}/>
-      <Statistic name="positive" value={props.good/(props.good+props.neutral+props.bad)*100} percent={true}/>
+      <table>
+        <tbody>
+          <Statistic name="good" value={props.good}/>
+          <Statistic name="neutral" value={props.neutral}/>
+          <Statistic name="bad" value={props.bad}/>
+          <Statistic name="average" value={(props.good-props.bad)/(props.good+props.neutral+props.bad)}/>
+          <Statistic name="positive" value={props.good/(props.good+props.neutral+props.bad)*100} percent={true}/>
+        </tbody>
+      </table>
     </div>
   )
 }
